@@ -12,6 +12,7 @@ public class CLI {
 		try{
 		String line;
 		while(!(line=in.readLine()).equals(exitStr)){
+			System.out.println(line);
 		out.println(line);
 		out.flush();
 		}
@@ -34,8 +35,8 @@ public class CLI {
 		PrintWriter outToServer=new PrintWriter(theServer.getOutputStream());
 		PrintWriter outToScreen=new PrintWriter(System.out);
 		Thread t1= aSyncReadInputsAndSend(userInput,outToServer,"exit"); // different thread
-		Thread t2= aSyncReadInputsAndSend(serverInput,outToScreen,"bye"); // different thread
-		t1.join(); t2.join(); // wait for threads to end
+		//Thread t2= aSyncReadInputsAndSend(serverInput,outToScreen,"bye"); // different thread
+		t1.join(); //t2.join(); // wait for threads to end
 		userInput.close();
 		serverInput.close();
 		outToServer.close();
